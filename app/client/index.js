@@ -48,14 +48,17 @@ Template.activity.events({
   "click .delete": function () {
     Meteor.call("deleteActivity", this._id);
   },
-  "click .toggle-private": function () {
-    Meteor.call("setPrivate", this._id, ! this.private);
+  "click" : function(){
+    Meteor.call("expand", this._id, !this.expand);
   }
 });
 
 Template.activity.helpers({
   isOwner: function () {
     return this.owner === Meteor.userId();
+  },
+  expand : function(){
+    return this.expand;
   }
 });
 

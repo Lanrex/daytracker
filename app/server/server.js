@@ -2,7 +2,6 @@
 Meteor.publish("activities", function () {
   return Activities.find({
     $or: [
-      { private: {$ne: true} },
       { owner: this.userId }
     ]
   });

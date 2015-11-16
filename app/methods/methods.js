@@ -9,7 +9,8 @@ Meteor.methods({
       text: text,
       createdAt: new Date(),
       owner: Meteor.userId(),
-      username: Meteor.user().username
+      username: Meteor.user().username,
+      expand: false
     });
   },
 
@@ -33,6 +34,10 @@ Meteor.methods({
     else{
       Activities.update(taskId, { $set: { checked: setChecked} });
     }
+  },
+
+  expand : function(taskId, expand){
+    Activities.update(taskId, {$set : {expand : expand}});
   },
 
   setPrivate: function (taskId, setToPrivate) {
