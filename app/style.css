@@ -1,0 +1,53 @@
+/* CSS declarations go here */
+body {
+  font-family: sans-serif;
+  background-color: #315481;
+  background-image: linear-gradient(to bottom, #315481, #918e82 100%);
+  background-attachment: fixed;
+
+  position: absolute;
+  top: 0;
+  bottom: 0;
+  left: 0;
+  right: 0;
+
+  padding: 0;
+  margin: 0;
+
+  font-size: 14px;
+}
+.header {
+  background: #d2edf4;
+  background-image: linear-gradient(to bottom, #d0edf5, white 100%);
+  padding: 20px 15px 15px 15px;
+  position: relative;
+}
+.content{
+  padding: 10px;
+  bottom:0;
+}
+.trackerItemC{
+  background-color: #dddddd;
+  margin: 3px;
+  border: 1px solid black;
+}
+.container {
+  max-width: 600px;
+  margin: 0 auto;
+  min-height: 100%;
+  background: white;
+}
+.nav{
+  background-color: #dede66;
+  height: 40px;
+  width: 100px;
+  display: table-cell;
+  text-align: center;
+  vertical-align: middle;
+  border-radius: 3px;
+  margin-right: 5px;
+}
+.nav:hover
+{
+  background-color: #fafa34;
+}

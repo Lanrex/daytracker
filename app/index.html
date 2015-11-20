@@ -1,0 +1,80 @@
+<head>
+  <title>Day Tracker</title>
+</head>
+
+<body>
+
+</body>
+
+<template name="main">
+  <div class="container">
+    <div class="header">
+      <h1>DayTracker</h1>
+    </div>
+    <div class="content">
+      {{> navigation}}
+      {{> yield}}
+    </div>
+  </div>
+</template>
+
+<template name="home">
+  <h2>Home</h2>
+  <p>Welcome to DayTracker</p>
+</template>
+
+<template name="navigation2">
+  <div class="nav">
+    Test
+  </div>
+  <div class="nav">
+    Test
+  </div>
+  <div class="nav">
+    Test
+  </div>
+</template>
+
+<template name="navigation">
+  <ul>
+      <li><a href="{{pathFor route='home'}}">Home</a></li>
+      <li><a href="{{pathFor route='trackers'}}">Trackers</a></li>
+  </ul>
+</template>
+
+<template name="trackers">
+  <h2>Trackers</h2>
+  {{> addTracker}}
+  {{#each tracker}}
+    {{> trackerItem}}
+  {{/each}}
+</template>
+
+<template name="trackerItem">
+  <div class="trackerItemC">
+    <p>Name {{name}}</p>
+    <ul>
+      <li>Completed: 100%</li>
+      <li>Current Streak: 10</li>
+      <li>Longest Streak: 10</li>
+    </ul>
+  </div>
+</template>
+
+<template name="tracker">
+  <h2>Tracker details</h2>
+  <p>Name: {{name}}</p>
+  {{#if days.today}}
+    YAY
+  {{else}}
+    NAY
+  {{/if}}
+</template>
+
+<template name="addTracker">
+  <form>
+    New tracker:
+    <input type="text" name="trackerName">
+    <input type="submit" value="Submit">
+  </form>
+</template>
