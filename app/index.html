@@ -28,7 +28,7 @@
     Test
   </div>
   <div class="nav">
-    Test
+    Testmeteo
   </div>
   <div class="nav">
     Test
@@ -63,12 +63,10 @@
 
 <template name="tracker">
   <h2>Tracker details</h2>
-  <p>Name: {{name}}</p>
-  {{#if days.today}}
-    YAY
-  {{else}}
-    NAY
-  {{/if}}
+  <p>Name:  {{one.name}}</p>
+  {{#each two}}
+  <p>Activity:  {{name}}</p>
+  {{/each}}
 </template>
 
 <template name="addTracker">

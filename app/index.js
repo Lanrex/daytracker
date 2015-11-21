@@ -19,8 +19,11 @@ Router.route('/tracker/:_id', {
   template: 'tracker',
   name: 'tracker',
   data: function(){
-    return Trackers.findOne({_id: this.params._id});
-  }
+        return {
+          one: Trackers.findOne({_id: this.params._id}),
+          two: Activities.find({trackerId: this.params._id})
+        }
+      }
 });
 
 function getToday(){
@@ -50,12 +53,22 @@ if (Meteor.isClient){
       var today = getToday();
       var name = $('[name=trackerName]').val();
 
-      var data = {};
-      data["name"] = name;
-      data[today] = false;
+      var trackerData = {
+        name: name
+      };
 
-      Trackers.insert(data);
-      $('[name=trackerName]').val('')
+      var trackerId = Trackers.insert(trackerData);
+      $('[name=trackerName]').val('');
+
+      console.log('lel' + trackerId);
+
+      var activityData = {
+        name: 'first',
+        active: true,
+        trackerId: trackerId
+      };
+
+      Activities.insert(activityData);
     }
   });
 
