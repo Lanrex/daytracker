@@ -16,6 +16,13 @@ body {
 
   font-size: 14px;
 }
+
+.main{
+  height: 300px;
+  width: 200px;
+  background-color: #dedede;
+}
+
 .header {
   background: #d2edf4;
   background-image: linear-gradient(to bottom, #d0edf5, white 100%);

@@ -64,9 +64,30 @@
 <template name="tracker">
   <h2>Tracker details</h2>
   <p>Name:  {{one.name}}</p>
+  <hr>
+  <div class="main">
+    <p>{{three.name}}</p>
+    <input type="button" value="Press" id="pressButt">
+    <p>Info 1: ...</p>
+    <p>Info 2: ...</p>
+  </div>
+  <hr>
+  {{> addActivity}}
   {{#each two}}
-  <p>Activity:  {{name}}</p>
+    {{#if active}}
+      <p><strong>Activity: {{name}}</strong></p>
+    {{else}}
+      <p>Activity:  {{name}} <input type="button" class="set" name="{{_id}}" value="set"></p>
+    {{/if}}
   {{/each}}
+</template>
+
+<template name="addActivity">
+  <form>
+    New activity:
+    <input type="text" name="activityName">
+    <input type="submit" value="Submit">
+  </form>
 </template>
 
 <template name="addTracker">

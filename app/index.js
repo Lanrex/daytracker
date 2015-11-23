@@ -21,7 +21,8 @@ Router.route('/tracker/:_id', {
   data: function(){
         return {
           one: Trackers.findOne({_id: this.params._id}),
-          two: Activities.find({trackerId: this.params._id})
+          two: Activities.find({trackerId: this.params._id}),
+          three: Activities.findOne({trackerId: this.params._id, active: true})
         }
       }
 });
@@ -72,6 +73,22 @@ if (Meteor.isClient){
     }
   });
 
+  Template.addActivity.events({
+    'submit form': function(event){
+      event.preventDefault();
+      var name =$('[name=activityName]').val();
+      var trackerId = Router.current().params._id;
+
+      var data = {
+        name: name,
+        active: false,
+        trackerId: trackerId
+      }
+
+      Activities.insert(data);
+    }
+  });
+
   Template.trackers.helpers({
     'tracker': function(){
       return Trackers.find({});
@@ -82,6 +99,22 @@ if (Meteor.isClient){
     'click': function(){
       console.log(this._id);
       Router.go('tracker', {_id: this._id});
+    }
+  });
+
+  Template.tracker.events({
+    'click .set': function(event){
+      event.preventDefault();
+      var newId = this._id;
+      var oldId = Activities.findOne({trackerId: this.trackerId, active: true})._id;
+      //console.log('New: ' + newId + '\nOld: ' + oldId);
+      Activities.update({_id: oldId}, {$set: {active: false}});
+      Activities.update({_id: newId}, {$set: {active: true}});
+    },
+
+    'click #pressButt': function(event){
+      event.preventDefault();
+      console.log('lul');
     }
   });
 
